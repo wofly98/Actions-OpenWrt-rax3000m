@@ -11,15 +11,24 @@ include $(TOPDIR)/rules.mk
 PKG_NAME:=arm-trusted-firmware-mediatek
 PKG_RELEASE:=3
 PKG_VERSION:=1.0.0
-PKG_SOURCE_PROTO:=git
-PKG_SOURCE_URL=https://github.com/wofly98/arm-trusted-firmware.git
-PKG_MIRROR_HASH:=skip
+
+PKG_SOURCE:=mtksoc.zip
+PKG_SOURCE_URL:=https://github.com/wofly98/arm-trusted-firmware/archive/refs/heads
+PKG_HASH:=73f3f13bb6701bff44aaa174afdd50f380cb11484b623deaf57272ede5dbcebe
 
 PKG_MAINTAINER:=Daniel Golle <daniel@makrotopia.org>
 
 include $(INCLUDE_DIR)/kernel.mk
 include $(INCLUDE_DIR)/trusted-firmware-a.mk
 include $(INCLUDE_DIR)/package.mk
+
+define Build/Prepare
+	rm -rf $(PKG_BUILD_DIR)
+	mkdir -p $(PKG_BUILD_DIR)
+	unzip -d $(PKG_BUILD_DIR)/ $(DL_DIR)/$(PKG_SOURCE)
+	mv $(PKG_BUILD_DIR)/arm-trusted-firmware-mtksoc/* $(PKG_BUILD_DIR)/
+	rm -rf $(PKG_BUILD_DIR)/arm-trusted-firmware-mtksoc
+endef
 
 define Trusted-Firmware-A/Default
   BUILD_TARGET:=mediatek
