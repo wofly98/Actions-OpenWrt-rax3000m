@@ -98,7 +98,7 @@ jobs:
         make download -j$(nproc)
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
-        find . -name pll.c -exec ls -l {} \;
+        find . -name pll.c -exec echo -e {} \;
         exit -1
     - name: 编译固件
       id: compile
