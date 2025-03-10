@@ -92,19 +92,17 @@ jobs:
 
     - name: 下载安装包
       id: package
-      env:
-        FIXUP: 1
       run: |
         cd openwrt
         make defconfig
         make download -j$(nproc)
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
+        echo finding
+        find package/boot/arm-trusted-firmware-mediatek/
 
     - name: 编译固件
       id: compile
-      env:
-        FIXUP: 1
       run: |
         cd openwrt
         echo -e "$(nproc) thread compile"
