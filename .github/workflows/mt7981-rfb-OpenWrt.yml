@@ -98,8 +98,6 @@ jobs:
         make download -j$(nproc)
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
-        echo finding
-        ls -l package/download/
 
     - name: 编译固件
       id: compile

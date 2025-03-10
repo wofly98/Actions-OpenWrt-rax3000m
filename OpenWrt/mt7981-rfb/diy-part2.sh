@@ -12,6 +12,7 @@
 
 # Modify default IP
 #sed -i 's/192.168.1.1/192.168.50.5/g' package/base-files/files/bin/config_generate
-cp ${GITHUB_WORKSPACE}/OpenWrt/mt7981-rfb/mt7981.dtsi target/linux/mediatek/files-6.6/arch/arm64/boot/dts/mediatek/ -f
-#cp ${GITHUB_WORKSPACE}/OpenWrt/mt7981-rfb/Makefile package/boot/arm-trusted-firmware-mediatek/ -f
+#cp ${GITHUB_WORKSPACE}/OpenWrt/mt7981-rfb/mt7981.dtsi target/linux/mediatek/files-6.6/arch/arm64/boot/dts/mediatek/ -f
+#cp ${GITHUB_WORKSPACE}/OpenWrt/mt7981-rfb/Makefile package/boot/arm-trusted-firmware-mediatek/Makefile -f
+cp ${GITHUB_WORKSPACE}/OpenWrt/mt7981-rfb/trusted-firmware-a.mk include/trusted-firmware-a.mk -f
 cp ${GITHUB_WORKSPACE}/OpenWrt/mt7981-rfb/pll.c package/boot/arm-trusted-firmware-mediatek/ -f
