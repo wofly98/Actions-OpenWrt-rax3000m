@@ -99,7 +99,7 @@ jobs:
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
         echo finding
-        find package/boot/arm-trusted-firmware-mediatek/
+        ls -l package/download/
 
     - name: 编译固件
       id: compile
