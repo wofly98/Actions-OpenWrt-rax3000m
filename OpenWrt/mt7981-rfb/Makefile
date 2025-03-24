@@ -23,12 +23,6 @@ include $(INCLUDE_DIR)/kernel.mk
 include $(INCLUDE_DIR)/trusted-firmware-a.mk
 include $(INCLUDE_DIR)/package.mk
 
-define Build/Prepare
-	cp $(TOPDIR)/package/boot/arm-trusted-firmware-mediatek/pll.c $(PKG_BUILD_DIR)/plat/mediatek/mt7981/drivers/pll/ -f
-	cp $(PKG_BUILD_DIR)/plat/mediatek/mt7981/drivers/pll/pll.c $(PKG_BUILD_DIR)/plat/mediatek/mt7981/drivers/pll/pll.ccc -f
-	echo "copy pll.c done!!!"
-endef
-
 define Trusted-Firmware-A/Default
   BUILD_TARGET:=mediatek
   TFA_IMAGE:=bl2.img bl31.bin

@@ -77,8 +77,6 @@ endef
 DTC=$(wildcard $(LINUX_DIR)/scripts/dtc/dtc)
 
 define Build/Compile/Trusted-Firmware-A
-	$(CP) $(TOPDIR)/package/boot/arm-trusted-firmware-mediatek/pll.c $(PKG_BUILD_DIR)/plat/mediatek/mt7981/drivers/pll/pll.c -f
-	$(CP) $(TOPDIR)/package/boot/arm-trusted-firmware-mediatek/pll.c $(PKG_BUILD_DIR)/plat/mediatek/mt7981/drivers/pll/pll.ccc -f
 	+unset CC; \
 	$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR) \
 		CROSS_COMPILE=$(TARGET_CROSS) \

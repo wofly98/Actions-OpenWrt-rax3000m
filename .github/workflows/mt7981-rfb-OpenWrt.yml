@@ -73,8 +73,12 @@ jobs:
     - name: 更新 & 安装 feeds
       run: |
         cd openwrt
+        echo "src-git mtk_openwrt_feed https://git01.mediatek.com/openwrt/feeds/mtk-openwrt-feeds" >> feeds.conf.default
         ./scripts/feeds update -a
         ./scripts/feeds install -a
+        
+        cp -af ./feeds/mtk_openwrt_feed/master/files/* .
+        for file in $(find ./feeds/mtk_openwrt_feed/master/patches-base -name "*.patch" | sort); do patch -f -p1 -i ${file}; done
       
     - name: 加载config & DIY_P2_SH
       run: |
