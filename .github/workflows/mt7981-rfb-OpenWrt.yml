@@ -77,6 +77,10 @@ jobs:
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         
+        ls -l ./feeds/mtk_openwrt_feed/
+        ls -l ./feeds/mtk_openwrt_feed/autobuild/
+        ls -l ./feeds/mtk_openwrt_feed/autobuild/unified/
+        ls -l ./feeds/mtk_openwrt_feed/autobuild/unified/global/
         cp -af ./feeds/mtk_openwrt_feed/24.10/files/* .
         cp -af ./feeds/mtk_openwrt_feed/autobuild/unified/global/24.10/files/* .
         for file in $(find ./feeds/mtk_openwrt_feed/24.10/patches-base -name "*.patch" | sort); do patch -f -p1 -i ${file} || echo "patch failed"; done
